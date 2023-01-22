@@ -1,0 +1,7 @@
+/**
+!.gitignore
+!/i3status/
+!/i3/
+!/nvim/
+!/alacritty/
+!/mpv/
