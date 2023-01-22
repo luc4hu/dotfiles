@@ -1,0 +1,93 @@
+set $mod Mod4
+
+for_window [class="^.*"] border pixel 2
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% 
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# start a terminal
+bindsym $mod+Return exec --no-startup-id alacritty
+
+# kill focused window
+bindsym $mod+n kill
+
+# start dmenu (a program launcher)
+bindsym $mod+m exec --no-startup-id dmenu_run
+
+# start chrome
+bindsym $mod+c exec --no-startup-id google-chrome-stable --password-store=basic
+
+# start firefox
+bindsym $mod+f exec --no-startup-id firefox
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Control+h move left
+bindsym $mod+Control+j move down
+bindsym $mod+Control+k move up
+bindsym $mod+Control+l move right
+
+# split in horizontal orientation
+bindsym $mod+b split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+
+# switch to workspace
+bindsym $mod+y workspace number $ws1
+bindsym $mod+u workspace number $ws2
+bindsym $mod+i workspace number $ws3
+bindsym $mod+o workspace number $ws4
+bindsym $mod+p workspace number $ws5
+
+# move focused container to workspace
+bindsym $mod+Control+y move container to workspace number $ws1
+bindsym $mod+Control+u move container to workspace number $ws2
+bindsym $mod+Control+i move container to workspace number $ws3
+bindsym $mod+Control+o move container to workspace number $ws4
+bindsym $mod+Control+p move container to workspace number $ws5
+
+# keyboard
+exec --no-startup-id setxkbmap -option caps:escape eu
+exec --no-startup-id xset r rate 170 30
+
+# wallpaper
+exec --no-startup-id feh --bg-scale $HOME/.config/i3/wallpaper.png
+
+# logout
+bindsym $mod+x exec i3-msg exit
+
+#shutdown 
+bindsym $mod+Shift+x exec systemctl poweroff
+
+#shutdown 
+bindsym $mod+Shift+z exec systemctl reboot
+
+# reload the configuration file
+bindsym $mod+Shift+r reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+r restart
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+	status_command i3status
+	font pango:Iosevka Bold
+	separator_symbol "   "
+	workspace_min_width 70
+}
