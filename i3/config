@@ -8,6 +8,8 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
 
+floating_modifier $mod
+
 # start a terminal
 bindsym $mod+Return exec --no-startup-id alacritty
 
@@ -67,9 +69,6 @@ bindsym $mod+Control+p move container to workspace number $ws5
 exec --no-startup-id setxkbmap -option caps:escape eu
 exec --no-startup-id xset r rate 170 30
 
-# wallpaper
-exec --no-startup-id feh --bg-scale $HOME/.config/i3/wallpaper.png
-
 # logout
 bindsym $mod+x exec i3-msg exit
 
@@ -84,6 +83,9 @@ bindsym $mod+Shift+r reload
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+r restart
+
+# wallpaper
+exec_always --no-startup-id feh --bg-fill $HOME/.config/i3/wallpaper.png
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
