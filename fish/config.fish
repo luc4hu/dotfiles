@@ -31,4 +31,5 @@ alias gco "git checkout"
 alias gp "git push"
 alias ys "yay -Slq | fzf --multi --preview 'yay -Si {1}' | xargs -ro yay -S"
 alias yd "yay -Qq | fzf --multi --preview 'yay -Qi {1}' | xargs -ro yay -Rns"
+alias vpn "sudo openconnect --user e11905159@student.tuwien.ac.at vpn.tuwien.ac.at"
 
