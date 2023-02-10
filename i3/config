@@ -1,5 +1,8 @@
 set $mod Mod4
 
+gaps inner 5px
+smart_gaps on
+
 for_window [class="^.*"] border pixel 2
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% 
@@ -26,6 +29,9 @@ bindsym $mod+d exec --no-startup-id discord
 
 # start firefox
 bindsym $mod+f exec --no-startup-id firefox
+
+# start thunar
+bindsym $mod+t exec --no-startup-id thunar
 
 # change focus
 bindsym $mod+h focus left

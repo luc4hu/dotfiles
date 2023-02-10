@@ -11,7 +11,7 @@ set fish_cursor_visual      block
 
 alias ll "exa --long --git --no-user --group-directories-first --time-style long-iso"
 alias la "exa --long --git --all --group-directories-first --time-style long-iso"
-alias rm "rm -rf"
+alias rmf "rm -rf"
 alias cat "bat"
 alias wsc "windscribe connect RO"
 alias wsa "windscribe account"
