@@ -95,6 +95,9 @@ bindsym $mod+r restart
 # screenshot
 bindsym $mod+0 exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
+# synchronize clocks
+exec_always --no-startup-id timedatectl set-ntp true
+
 # wallpaper
 exec_always --no-startup-id feh --bg-fill $HOME/.config/i3/wallpaper.png
 

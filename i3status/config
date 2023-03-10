@@ -10,8 +10,8 @@ order += "cpu_usage"
 order += "tztime vienna"
 
 tztime vienna {
-        format = "%d.%m.%Y   %H:%M"
-	timezone = "Europe/Vienna"
+        format = "%A  %d.%m.%Y  %H:%M"
+	    timezone = "Europe/Vienna"
 }
 
 disk "/" {
