@@ -30,6 +30,9 @@ bindsym $mod+d exec --no-startup-id discord
 # start firefox
 bindsym $mod+f exec --no-startup-id firefox
 
+# start brave
+bindsym $mod+b exec --no-startup-id brave
+
 # start thunar
 bindsym $mod+t exec --no-startup-id thunar
 
@@ -44,9 +47,6 @@ bindsym $mod+Control+h move left
 bindsym $mod+Control+j move down
 bindsym $mod+Control+k move up
 bindsym $mod+Control+l move right
-
-# split in horizontal orientation
-bindsym $mod+b split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -108,4 +108,6 @@ bar {
 	font pango:Iosevka Bold
 	separator_symbol "   "
 	workspace_min_width 70
+    wheel_up_cmd nop
+    wheel_down_cmd nop
 }
