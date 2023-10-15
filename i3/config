@@ -12,6 +12,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
 
 floating_modifier $mod
+bindsym --whole-window $mod+button2 floating toggle
 
 # start a terminal
 bindsym $mod+Return exec --no-startup-id alacritty
@@ -74,8 +75,8 @@ bindsym $mod+Control+o move container to workspace number $ws4
 bindsym $mod+Control+p move container to workspace number $ws5
 
 # keyboard
-exec --no-startup-id setxkbmap -option caps:escape eu
-exec --no-startup-id xset r rate 170 30
+exec_always --no-startup-id setxkbmap -option caps:escape eu
+exec_always --no-startup-id xset r rate 170 30
 
 # logout
 bindsym $mod+x exec i3-msg exit
@@ -111,3 +112,5 @@ bar {
     wheel_up_cmd nop
     wheel_down_cmd nop
 }
+
+

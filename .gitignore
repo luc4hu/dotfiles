@@ -14,8 +14,8 @@
 !alacritty/
 !alacritty/**
 
-!mpv/
-!mpv/**
+!mpv/input.conf
+!mpv/mpv.conf
 
 !fish/
 !fish/config.fish
