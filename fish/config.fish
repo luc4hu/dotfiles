@@ -32,5 +32,6 @@ alias ys "yay -Slq | fzf --multi --preview 'yay -Si {1}' | xargs -ro yay -S"
 alias yd "yay -Qq | fzf --multi --preview 'yay -Qi {1}' | xargs -ro yay -Rns"
 alias vpn "sudo openconnect --user e11905159@student.tuwien.ac.at vpn.tuwien.ac.at"
 alias man "batman"
+alias dps "docker ps -a --format 'table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Ports}}\t{{.RunningFor}}\t{{.State}}'"
 
-nvm -s use lts 
+#nvm -s use lts 
