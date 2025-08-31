@@ -1,26 +1,24 @@
 set $mod Mod4
 
-gaps inner 5px
-smart_gaps on
+smart_borders on
 
 for_window [class="^.*"] border pixel 2
 
 assign [class="discord"] 2
 
-exec_always google-chrome-stable
-exec_always discord
+exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
+exec --no-startup-id google-chrome-stable --new-window 
+# exec --no-startup-id discord
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% 
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 
-exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
-
 floating_modifier $mod
 bindsym --whole-window $mod+button2 floating toggle
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id alacritty
+bindsym $mod+Return exec --no-startup-id ghostty
 
 # kill focused window
 bindsym $mod+n kill
@@ -55,7 +53,7 @@ bindsym $mod+Control+k move up
 bindsym $mod+Control+l move right
 
 # split in vertical orientation
-bindsym $mod+v split v
+# bindsym $mod+v split v
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -81,7 +79,7 @@ bindsym $mod+Control+p move container to workspace number $ws5
 
 # keyboard
 exec_always --no-startup-id setxkbmap -option caps:escape eu
-exec_always --no-startup-id xset r rate 170 30
+# exec_always --no-startup-id xset r rate 220 40
 
 # logout
 bindsym $mod+x exec i3-msg exit
@@ -101,11 +99,15 @@ bindsym $mod+r restart
 # screenshot
 bindsym $mod+0 exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
+bindsym $mod+9 exec_always --no-startup-id maim --select "/home/luca/screenshots/$(date +"%H-%M-%S").png"
+
+
 # synchronize clocks
 exec_always --no-startup-id timedatectl set-ntp true
 
 # wallpaper
 exec_always --no-startup-id feh --bg-fill $HOME/.config/i3/wallpaper.png
+# exec_always --no-startup-id feh --bg-fill $HOME/Downloads/anime.jpeg
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -114,8 +116,9 @@ bar {
 	font pango:Iosevka Bold
 	separator_symbol "   "
 	workspace_min_width 70
-    wheel_up_cmd nop
-    wheel_down_cmd nop
+	wheel_up_cmd nop
+	wheel_down_cmd nop
 }
 
 
+exec_always for id in $(xinput list | grep "pointer" | cut -d '=' -f 2 | cut -f 1); do xinput --set-prop $id 'libinput Accel Profile Enabled' 0, 1; done
